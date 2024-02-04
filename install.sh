@@ -1,10 +1,8 @@
-sudo apt-get install python3
-sudo apt-get install pip
+sudo apt-get -y install python3
+sudo apt-get -y install pip
+sudo apt-get -y install docker
+sudo apt-get -y install docker-compose
+sudo apt-get -y install libpq-dev
 pip install --upgrade pip
-pip install flask
-pip install flask-login
-pip install sqlalchemy
-pip install sqlalchemy-serializer
-pip install flask-wtf
-pip install wtforms
+pip install -r requirements.txt
 chmod +x run.sh
