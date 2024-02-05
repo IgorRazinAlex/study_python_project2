@@ -1,3 +1,6 @@
+import json
+from os import path
+
 import sqlalchemy as sa
 import sqlalchemy.orm as orm
 from sqlalchemy.orm import Session
@@ -8,16 +11,16 @@ SqlAlchemyBase = dec.declarative_base()
 __factory = None
 
 
-def global_init(db_file):
+def global_init():
     global __factory
 
     if __factory:
         return
 
-    if not db_file or not db_file.strip():
-        raise Exception("Необходимо указать файл базы данных.")
+    with open(path.join("data", "settings.json")) as file:
+        conn_data = json.load(file)
 
-    conn_str = f'sqlite:///{db_file.strip()}?check_same_thread=False'
+    conn_str = f'postgresql://{conn_data["pguser"]}:{conn_data["pgpassword"]}@{conn_data["pghost"]}:{conn_data["pgport"]}/{conn_data["pgdb"]}'
     print(f"Подключение к базе данных по адресу {conn_str}")
 
     engine = sa.create_engine(conn_str, echo=False)

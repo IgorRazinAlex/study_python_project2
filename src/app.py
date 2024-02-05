@@ -135,9 +135,8 @@ class App:
                                              str(post.id), "chapters"))
 
                     preview = form.preview.data
-                    if form.preview.object_data is not None:
-                        preview.save(os.path.join("static", "image", "manga",
-                                                  str(post.id), "preview.jpg"))
+                    preview.save(os.path.join("static", "image", "manga",
+                                              str(post.id), "preview.jpg"))
 
                     db_sess.close()
 
@@ -386,7 +385,7 @@ class App:
 
     @staticmethod
     def build_db_session():
-        db_session.global_init(os.path.join("db", "users.db"))
+        db_session.global_init()
 
     @staticmethod
     def update_manga_rating(manga_id):

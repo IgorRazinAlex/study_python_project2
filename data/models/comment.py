@@ -14,7 +14,7 @@ class Comment(SqlAlchemyBase, SerializerMixin):
     rating = sqlalchemy.Column(sqlalchemy.Integer)
     author = sqlalchemy.Column(sqlalchemy.String,
                                sqlalchemy.ForeignKey("users.username"))
-    post = sqlalchemy.Column(sqlalchemy.String,
+    post = sqlalchemy.Column(sqlalchemy.Integer,
                              sqlalchemy.ForeignKey("posts.id"))
     date = sqlalchemy.Column(sqlalchemy.DateTime,
                              default=datetime.datetime.now())

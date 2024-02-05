@@ -18,7 +18,7 @@ class User(SqlAlchemyBase, UserMixin, SerializerMixin):
     email = sqlalchemy.Column(sqlalchemy.String,
                               unique=True)
     age = sqlalchemy.Column(sqlalchemy.Integer)
-    hashed_password = sqlalchemy.Column(sqlalchemy.Integer)
+    hashed_password = sqlalchemy.Column(sqlalchemy.String)
     register_date = sqlalchemy.Column(sqlalchemy.DateTime,
                                       default=datetime.datetime.now())
 
