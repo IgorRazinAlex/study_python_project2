@@ -51,8 +51,21 @@ chmod +x install.sh
 
 # RUN:
 ```
+#  To run this application, follow these steps:
+#  1. Import your PostgreSQL server settings to data/settings and
+#  docker-compose.yml files 
+#  2. Before running application, you first need to raise PosgreSQL
+#  server. Do it by running:
+./db_raise
+#  3. Run the application:
 ./run.sh
+#  4. To stop application running, use ^C in CLI. To stop DB running,
+#  use:
+./db_stop.sh
+#  5. To drop DB, use:
+./db_down.sh
+#  WARNING! This step removes all of DB`s info, but does not affect
+#  local files. After dropping table, consider removing all of
+#  static/manga data, otherwise file conflicts could happen if you
+#  start new DB 
 ```
-# NOTE:
-You can change host and port for site by changing fields in 
-static/json/server_data.json file. By default, it is set to create local host
